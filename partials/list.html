@@ -1,0 +1,37 @@
+<section class="artistpage">
+  <div class="search">
+    <h1>Contact Book</h1>
+    <label>Search:</label>
+    <input placeholder="" autofocus ng-model="query">
+
+    <label class="formgroup">By:
+      <select ng-model="order">
+        <option value="name">Name</option>
+        <option value="reknow">Reknown</option>
+      </select>
+    </label>
+
+    <label class="formgroup">
+      <input ng-model="direction" type="radio" checked>
+      Ascending
+    </label>
+    <label class="formgroup">
+      <input ng-model="direction" type="radio" value="reverse">
+      Dscending
+    </label>
+
+  </div>
+
+  <ul class="artistlist" ng-show="query">
+    <li ng-animate="'animate'" class="artist cf" ng-repeat="people in contact | filter: query | orderBy: order:direction">
+      <a href="#/details/{{contact.indexOf(people)}}">
+        <img ng-src="images/{{people.shortname}}.jpg" alt="Photo of {{people.name}}">
+        <div class="info">
+          <h2>{{people.name}}</h2>
+
+          <h3>{{people.reknown}}</h3>
+        </div>
+      </a>
+    </li>
+  </ul> 
+</section>
